@@ -6,16 +6,22 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        'primary': '#4C3A51',
-        'secondary': '#774360',
-        'tertiary': '#B25068',
-        'quaternary': '#E7AB79'
-      },
+      // colors: {
+      //   'primary': '#4E0223',
+      //   'secondary': '#72163E',
+      //   'tertiary': '#B96087',
+      //   'quaternary': '#DB96B4'
+      // },
+      fontFamily: {
+        poppins: "Poppins",
+      }
     },
   },
   plugins: [
     require('daisyui'),
   ],
+  daisyui: {
+    themes: ["winter", "sunset", "cyberpunk"],
+  },
 }
 

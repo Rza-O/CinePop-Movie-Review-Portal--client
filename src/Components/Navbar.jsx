@@ -10,7 +10,7 @@ const Navbar = () => {
         <li><NavLink to='/nowPlaying'>Now Playing</NavLink></li>
     </>
     return (
-        <div className="navbar bg-quaternary">
+        <div className="navbar bg-secondary text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,8 +41,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
-                <a className="btn">Login</a>
-                <a className="btn">Register</a>
+                <NavLink to='/login'><a className="btn">Login</a></NavLink>
+                <NavLink to='/register'><a className="btn">Register</a></NavLink>
             </div>
         </div>
     );
