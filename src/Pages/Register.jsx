@@ -5,7 +5,7 @@ import { AuthContext } from '../Context/AuthProvider';
 import { useForm } from 'react-hook-form';
 
 const Register = () => {
-    const { handleRegister, handleGoogleLogin } = useContext(AuthContext);
+    const { handleRegister, handleGoogleLogin,setUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const registerForm = (data) => {
@@ -13,7 +13,8 @@ const Register = () => {
         handleRegister(email, password)
             .then(res => {
                 const user = res.user
-                console.log(user);
+                setUser(user);
+                
             })
             .catch(err => {
                 console.log(err.code, err.message);
