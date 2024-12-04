@@ -89,7 +89,7 @@ const Navbar = () => {
                         </div>
                         <a className="btn" onClick={handleLogOut}>Log out</a> 
                     </div>
-                    : <div>
+                    : <div className='flex gap-2'>
                         <NavLink to='/login'><a className="btn">Login</a></NavLink>
                         <NavLink to='/register'><a className="btn">Register</a></NavLink>
                     </div>

@@ -27,6 +27,9 @@ const Register = () => {
                 // .then(res=> {
                 //     console.log(res);
                 // })
+
+                // Saving the user info in the DB
+                
                 .catch(err=> {
                     console.log(err.code, err.message);
                 })

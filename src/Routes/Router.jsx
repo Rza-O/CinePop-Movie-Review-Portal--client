@@ -4,6 +4,7 @@ import MainLayout from '../Layout/MainLayout';
 import Home from '../Pages/Home';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
+import AddMovies from '../Pages/AddMovies';
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/addMovies',
+                element:<AddMovies></AddMovies>
             }
         ]
     }
