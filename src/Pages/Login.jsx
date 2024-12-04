@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../Context/AuthProvider';
 
 const Login = () => {
+    const { handleGoogleLogin } = useContext(AuthContext);
     const {register, handleSubmit} = useForm();
+    const handleSocialLogin = () => {
+        handleGoogleLogin()
+        .then(data=> {
+            console.log(data);
+        })
+    }
     const loginForm = (data) => {
         const {email, password} = data
         console.log(email, password);
@@ -29,6 +37,8 @@ const Login = () => {
                     <button className="btn btn-primary">Login</button>
                 </div>
             </form>
+
+            <button onClick={handleSocialLogin} className='btn'>Google</button>
         </div>
     );
 };
