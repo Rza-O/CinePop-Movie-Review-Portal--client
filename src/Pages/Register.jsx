@@ -5,16 +5,31 @@ import { AuthContext } from '../Context/AuthProvider';
 import { useForm } from 'react-hook-form';
 
 const Register = () => {
-    const { handleRegister, handleGoogleLogin,setUser } = useContext(AuthContext);
+    const { handleRegister, handleGoogleLogin, setUser, updateUserProfile, user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
+    console.log(user);
+
+    const handleSocialLogin = () => {
+        handleGoogleLogin()
+        .then(res=> {
+            console.log(res.user);
+        })
+    }
 
     const registerForm = (data) => {
         const { name, email, password, photoURL } = data
         handleRegister(email, password)
             .then(res => {
                 const user = res.user
+                console.log(user);
                 setUser(user);
-                
+                updateUserProfile({displayName: name, photoURL: photoURL})
+                // .then(res=> {
+                //     console.log(res);
+                // })
+                .catch(err=> {
+                    console.log(err.code, err.message);
+                })
             })
             .catch(err => {
                 console.log(err.code, err.message);
@@ -80,7 +95,7 @@ const Register = () => {
                 </form>
                 <div className="divider">OR</div>
                 <div className='flex justify-center'>
-                    <button className='btn bg-secondary text-white text-lg'> <FaGoogle className='text-2xl' /> Log in with Google</button>
+                    <button onClick={handleSocialLogin} className='btn bg-secondary text-white text-lg'> <FaGoogle className='text-2xl' /> Log in with Google</button>
                 </div>
             </div>
         </div>
