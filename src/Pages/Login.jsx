@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Context/AuthProvider';
 import googleIcon from '../assets/google.png';
@@ -6,17 +6,34 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-    const { handleGoogleLogin } = useContext(AuthContext);
+    // context for auth
+    const { handleGoogleLogin, setUser, handleLogin } = useContext(AuthContext);
+
+    // React form hook
     const { register, handleSubmit } = useForm();
+
+    // error handling for invalid credential
+    const [error, setError] = useState({});
+
+    // social Login with google
     const handleSocialLogin = () => {
         handleGoogleLogin()
             .then(data => {
                 console.log(data);
             })
     }
+
+    // Handling login with react form hook
     const loginForm = (data) => {
         const { email, password } = data
         console.log(email, password);
+        setError('')
+        handleLogin(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                setUser(user);
+            })
     }
     return (
         <div className='flex flex-col justify-center items-center mt-10 mb-7'>
@@ -25,7 +42,7 @@ const Login = () => {
                     <h2 className='text-3xl font-bold'>Welcome Back!</h2>
                     <p className='text-sm font-light'>Please Enter your details to login</p>
                 </div>
-                
+
 
                 <form className="card-body" onSubmit={handleSubmit(loginForm)}>
                     <div className="form-control">
@@ -50,7 +67,7 @@ const Login = () => {
                 </form>
                 <div className="divider">OR</div>
                 <div className='flex justify-center'>
-                    <button className='btn bg-secondary text-white w-11/12'> <FaGoogle className='text-2xl' /> Log in with Google</button>
+                    <button onClick={handleSocialLogin} className='btn bg-secondary text-white w-11/12'> <FaGoogle className='text-2xl' /> Log in with Google</button>
                 </div>
             </div>
         </div>

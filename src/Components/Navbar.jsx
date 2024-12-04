@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider';
 
 const Navbar = () => {
+    // Auth Context Destructuring
+    const {user} = useContext(AuthContext);
+    
+    // Toggle Theme 
     const [theme, setTheme] = useState('light');
     const toggleTheme = () => {
         setTheme(theme === 'sunset' ? 'winter' : 'sunset')
@@ -9,6 +14,8 @@ const Navbar = () => {
     useEffect(() => {
         document.querySelector('html').setAttribute('data-theme', theme);
     }, [theme]);
+
+    // Links For the navbar
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/allMovies'>All Movies</NavLink></li>
