@@ -50,7 +50,7 @@ const Login = () => {
                 </form>
                 <div className="divider">OR</div>
                 <div className='flex justify-center'>
-                    <button className='btn bg-secondary text-white text-lg'> <FaGoogle className='text-2xl' /> Log in with Google</button>
+                    <button className='btn bg-secondary text-white w-11/12'> <FaGoogle className='text-2xl' /> Log in with Google</button>
                 </div>
             </div>
         </div>

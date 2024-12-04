@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
+    const [theme, setTheme] = useState('light');
+    const toggleTheme = () => {
+        setTheme(theme === 'sunset' ? 'winter' : 'sunset')
+    }
+    useEffect(() => {
+        document.querySelector('html').setAttribute('data-theme', theme);
+    }, [theme]);
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/allMovies'>All Movies</NavLink></li>
@@ -43,7 +50,7 @@ const Navbar = () => {
             <div className="navbar-end gap-2">
                 <label className="swap swap-rotate">
                     {/* this hidden checkbox controls the state */}
-                    <input type="checkbox" className="theme-controller" value="synthwave" />
+                    <input onClick={toggleTheme} type="checkbox" className="theme-controller" value="synthwave" />
 
                     {/* sun icon */}
                     <svg
