@@ -1,21 +1,29 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import reviewImg from '../assets/PNG/4_SOCIAL MEDIA.png';
 import { useForm } from 'react-hook-form';
 import { Rating } from 'react-simple-star-rating';
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
+import { AuthContext } from '../Context/AuthProvider';
 
+// Animation for react star rating
 const animatedComponents = makeAnimated();
 
 const AddMovies = () => {
+    // Context to get the user
+    const {user} = useContext(AuthContext);
+    console.log(user?.email);
     // React form hook
-    const { register, handleSubmit, watch, setValue} = useForm();
+    const { register, handleSubmit, watch, setValue } = useForm();
     // Rating state
     const [rating, setRating] = useState(0);
     // rating change handler
     const handleRatingChange = (rate) => {
         setRating(rate)
     }
+    // generating year programmatically 
+    const currentYear = new Date().getFullYear();
+    const years = Array.from({length: currentYear - 1971 + 1}, (_, index)=> currentYear - index)
 
     // for multiple genres selection
     const options = [
@@ -31,7 +39,7 @@ const AddMovies = () => {
 
     // Add movies form submission with react form hook
     const handleAddMovies = (data) => {
-        const movieData = {...data, rating}
+        const movieData = { ...data, rating, duration: parseInt(data.duration), year: parseInt(data.year) }
         console.log(movieData);
     }
 
@@ -67,18 +75,28 @@ const AddMovies = () => {
 
 
 
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text font-bold">Runtime</span>
-                            </label>
-                            <input {...register('duration')} type="number" placeholder="duration" className="input input-bordered" required />
-                        </div>
-
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text font-bold">Release Year</span>
-                            </label>
-                            <input {...register('year')} type="number" placeholder="Year" className="input input-bordered" required />
+                        <div className='flex gap-2'>
+                            <div className="form-control w-1/2">
+                                <label className="label">
+                                    <span className="label-text font-bold">Runtime</span>
+                                </label>
+                                <input {...register('duration')} type="number" placeholder="duration" className="input input-bordered [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" required />
+                            </div>
+                            <div className="form-control w-1/2">
+                                <label className="label">
+                                    <span className="label-text font-bold">Release Year</span>
+                                </label>
+                                <select {...register('year', { required: true })} className="input input-bordered" defaultValue="" >
+                                    <option value="" disabled>
+                                        Select Year
+                                    </option>
+                                    {years.map((year) => (
+                                        <option key={year} value={year}>
+                                            {year}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
 
                         {/* genre drop down */}
@@ -92,14 +110,24 @@ const AddMovies = () => {
                                 placeholder='Select Genres'
                                 options={options}
                                 isMulti
-                                onChange={(selectedOptions)=>{
-                                    setValue('genres', selectedOptions? selectedOptions.map((option)=> option.value) : [])
+                                onChange={(selectedOptions) => {
+                                    setValue('genres', selectedOptions ? selectedOptions.map((option) => option.value) : [])
                                 }}
-                                />
+                            />
                         </div>
 
-                        {/* rating */}
+                        
+
                         <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Summary</span>
+                            </label>
+                            <textarea {...register('summary')} className="textarea textarea-bordered" placeholder="Write a brief summary here"></textarea>
+                        </div>
+
+
+                        {/* rating */}
+                        <div className="form-control justify-center items-center">
                             <label className="label">
                                 <span className="label-text font-bold">Rating</span>
                             </label>
@@ -107,20 +135,13 @@ const AddMovies = () => {
                                 <Rating
                                     onClick={handleRatingChange}
                                     ratingValue={rating}
-                                    size={25}
+                                    size={40}
                                     fillColor="#72163E"
                                     emptyColor="gray"
                                     transition
                                 />
                                 <span>{rating} / 5</span>
                             </div>
-                        </div>
-
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Summary</span>
-                            </label>
-                            <textarea {...register('summary')} className="textarea textarea-bordered" placeholder="Write a brief summary here"></textarea>
                         </div>
 
                         <div className="form-control mt-6">
