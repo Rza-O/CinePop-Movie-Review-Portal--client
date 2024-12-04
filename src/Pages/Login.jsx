@@ -34,6 +34,9 @@ const Login = () => {
                 console.log(user);
                 setUser(user);
             })
+            .catch(err=> {
+                setError({...err, login: err.code})
+            })
     }
     return (
         <div className='flex flex-col justify-center items-center mt-10 mb-7'>
@@ -60,6 +63,13 @@ const Login = () => {
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                     </div>
+                    {
+                        error.login && (
+                            <label className="label text-sm text-red-600">
+                                {error.login}
+                            </label>
+                        )
+                    }
                     <div className="form-control mt-6 mb-2">
                         <button className="btn bg-secondary text-white">Login</button>
                     </div>
