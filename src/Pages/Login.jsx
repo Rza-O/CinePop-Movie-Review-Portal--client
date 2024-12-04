@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Context/AuthProvider';
 import googleIcon from '../assets/google.png';
 import { FaGoogle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { handleGoogleLogin } = useContext(AuthContext);
@@ -42,13 +43,14 @@ const Login = () => {
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                     </div>
-                    <div className="form-control mt-6">
-                        <button className="btn btn-secondary">Login</button>
+                    <div className="form-control mt-6 mb-2">
+                        <button className="btn bg-secondary text-white">Login</button>
                     </div>
+                    <p className='text-center'>Don&apos;t have an account? <Link to='/register'><span className='text-tertiary hover:text-quaternary'>Sign Up</span></Link></p>
                 </form>
                 <div className="divider">OR</div>
                 <div className='flex justify-center'>
-                    <button className='btn btn-secondary text-white text-lg'> <FaGoogle className='text-2xl' /> Log in with Google</button>
+                    <button className='btn bg-secondary text-white text-lg'> <FaGoogle className='text-2xl' /> Log in with Google</button>
                 </div>
             </div>
         </div>

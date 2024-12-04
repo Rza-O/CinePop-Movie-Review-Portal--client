@@ -6,12 +6,12 @@ export default {
   ],
   theme: {
     extend: {
-      // colors: {
-      //   'primary': '#4E0223',
-      //   'secondary': '#72163E',
-      //   'tertiary': '#B96087',
-      //   'quaternary': '#DB96B4'
-      // },
+      colors: {
+        'primary': '#4E0223',
+        'secondary': '#72163E',
+        'tertiary': '#B96087',
+        'quaternary': '#DB96B4'
+      },
       fontFamily: {
         poppins: "Poppins",
       }
