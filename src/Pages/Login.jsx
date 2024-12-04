@@ -2,8 +2,8 @@ import React from 'react';
 
 const Login = () => {
     return (
-        <div>
-            This is Login page
+        <div className='min-h-screen '>
+            <button className='btn'>login</button>
         </div>
     );
 };
