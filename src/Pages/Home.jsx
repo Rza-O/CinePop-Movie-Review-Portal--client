@@ -1,9 +1,12 @@
 import React from 'react';
+import Banner from '../Components/Banner';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+    const moviesData = useLoaderData()
     return (
         <div>
-            This is home
+            <Banner moviesData={moviesData}></Banner>
         </div>
     );
 };

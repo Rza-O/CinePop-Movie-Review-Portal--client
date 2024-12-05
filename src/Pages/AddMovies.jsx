@@ -30,13 +30,16 @@ const AddMovies = () => {
 
     // for multiple genres selection
     const options = [
-        { value: 'action', label: 'Action' },
-        { value: 'thriller', label: 'Thriller' },
-        { value: 'comedy', label: 'Comedy' },
-        { value: 'horror', label: 'Horror' },
-        { value: 'drama', label: 'Drama' },
-        { value: 'rom-com', label: 'Rom-Com' },
-        { value: 'sci-fi', label: 'Sci-fi' },
+        { value: 'Action', label: 'Action' },
+        { value: 'Thriller', label: 'Thriller' },
+        { value: 'Crime', label: 'Crime' },
+        { value: 'Comedy', label: 'Comedy' },
+        { value: 'Romance', label: 'Romance' },
+        { value: 'Horror', label: 'Horror' },
+        { value: 'Drama', label: 'Drama' },
+        { value: 'Adventure', label: 'Adventure' },
+        { value: 'Rom-com', label: 'Rom-Com' },
+        { value: 'Sci-fi', label: 'Sci-fi' },
     ]
 
 
@@ -177,7 +180,13 @@ const AddMovies = () => {
                             <label className="label">
                                 <span className="label-text">Summary</span>
                             </label>
-                            <textarea {...register('summary')} className="textarea textarea-bordered" placeholder="Write a brief summary here" required></textarea>
+                            <textarea {...register('summary', {
+                                validate: {
+                                    minLength: (value) => 
+                                        value.length >= 10 || 'Summary has to be at least 10 characters long'
+                                }
+                            })} className="textarea textarea-bordered" placeholder="Write a brief summary here" required></textarea>
+                            {errors.summary && <p className='text-xs mt-1 text-secondary'>{errors.summary.message}</p>}
                         </div>
 
 
