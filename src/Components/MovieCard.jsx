@@ -20,12 +20,12 @@ const MovieCard = ({movie}) => {
                     src={movie.poster}
                     alt="Movie" />
             </figure>
-            <div className="card-body text-center">
+            <div className="card-body text-center space-y-2">
                 <h2 className='text-2xl text-secondary font-bold'>{title}</h2>
                 <div className='flex gap-4 justify-center'>
                     {
                         genres.map(genre => <div>
-                            <p className='badge bg-secondary text-xs text-white'>{genre}</p>
+                            <p className='p-1 rounded bg-secondary/90 text-xs text-white'>{genre}</p>
                         </div>)
                     }
                 </div>
