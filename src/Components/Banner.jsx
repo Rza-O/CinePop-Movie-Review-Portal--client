@@ -4,7 +4,14 @@ const Banner = ({ moviesData }) => {
     console.log(moviesData);
     return (
         <div>
-            This is banner
+            {
+                moviesData.map(movie =>
+                (<div key={movie._id}>
+                    <p className='text-5xl'>{movie.title}</p>
+                    <img src={movie.poster} alt="" />
+                </div>))
+            }
+
         </div>
     );
 };
