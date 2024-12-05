@@ -5,6 +5,7 @@ import { Rating } from 'react-simple-star-rating';
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 import { AuthContext } from '../Context/AuthProvider';
+import Swal from 'sweetalert2';
 
 // Animation for react star rating
 const animatedComponents = makeAnimated();
@@ -60,7 +61,14 @@ const AddMovies = () => {
         })
         .then(res=> res.json())
         .then(data=> {
-            console.log(data);
+            if(data.insertedId){
+                console.log(data);
+                Swal.fire({
+                    title: "Great!",
+                    text: "Movie Added Successfully!",
+                    icon: "success"
+                })
+            }
         })
     }
 
