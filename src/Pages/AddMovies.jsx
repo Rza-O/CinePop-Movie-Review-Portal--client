@@ -12,7 +12,7 @@ const animatedComponents = makeAnimated();
 const AddMovies = () => {
     // Context to get the user
     const { user } = useContext(AuthContext);
-    console.log(user?.email);
+    const addedBy = user?.email;
     // React form hook
     const { register, handleSubmit, setValue, formState: {errors} } = useForm();
     // Rating state
@@ -46,8 +46,22 @@ const AddMovies = () => {
             setError('Movie has to be rated')
             return
         }
-        const movieData = { ...data, rating, duration: parseInt(data.duration), year: parseInt(data.year) }
+        const movieData = { ...data, rating, duration: parseInt(data.duration), year: parseInt(data.year), addedBy }
         console.log(movieData);
+
+
+        // Sending Data to the Database
+        fetch('http://localhost:5000/movies', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(movieData)
+        })
+        .then(res=> res.json())
+        .then(data=> {
+            console.log(data);
+        })
     }
 
 
@@ -186,7 +200,7 @@ const AddMovies = () => {
                         </div>
 
                         <div className="form-control mt-6">
-                            <button className="btn bg-secondary text-white">Add Movie</button>
+                            <button className="w-1/2 mx-auto btn bg-secondary text-white">Add Movie</button>
                         </div>
                     </form>
                 </div>
