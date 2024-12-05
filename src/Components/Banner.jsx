@@ -32,17 +32,17 @@ const Banner = ({ moviesData }) => {
                 {
                     moviesData.map((movie, idx) => (
                         <SwiperSlide className='relative' key={idx}>
-                            <div className='relative bg-secondary border border-gray-200 shadow-lg rounded-md overflow-hidden'>
+                            <div className='relative bg-secondary border border-primary shadow-lg rounded-md overflow-hidden'>
                                 <img src={movie.poster} alt="" className='w-full h-[400px] object-contain md:object-cover ' />
                                 <div className='absolute bottom-0 w-full bg-gradient-to-t from-black via-transparent to-transparent text-white p-4'>
                                     <h3 className='text-2xl font-bold'>{movie.title}</h3>
                                     <div className='flex items-center space-x-1 text-lg'>
-                                        <AiFillStar className='text-yellow-400' />
+                                        <AiFillStar className='text-yellow-400 text-2xl' />
                                         <span>{movie.rating} / 5</span>
                                     </div>
-                                    <div className='flex items-center space-x-1 text-lg'>
+                                    <div className='flex items-center space-x-2 text-lg'>
                                         <FaClock />
-                                        <span>{movie.duration}</span>
+                                        <span>{movie.duration} mins</span>
                                     </div>
                                 </div>
                             </div>
