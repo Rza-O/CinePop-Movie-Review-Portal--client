@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
 import Swal from 'sweetalert2';
+import { FavoriteContext } from '../Context/FavoritesProvider';
 
 
-const MovieCard = ({ movie, favorites, setFavorites }) => {
+const MovieCard = ({ movie }) => {
     const { title, poster, genres, duration, year, rating, _id, email } = movie;
-    // console.log(_id);
+    const { favorites, setFavorites } = useContext(FavoriteContext)
 
 
     const handleDelete = (_id) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
+            title: "Remove this movie from favorite?",
+            icon: "question",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, remove it!"
         }).then(result => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:5000/favorites/${_id}`, {
@@ -28,8 +28,8 @@ const MovieCard = ({ movie, favorites, setFavorites }) => {
                         console.log(data);
                         if (data.deletedCount) {
                             Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                title: "Removed!",
+                                text: "Movie has been removed from favorites.",
                                 icon: "success"
                             });
                             const remainingFav = favorites.filter(singleFav => singleFav._id !== _id);

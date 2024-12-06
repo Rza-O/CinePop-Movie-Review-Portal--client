@@ -9,14 +9,6 @@ const FavoritesProvider = ({ children }) => {
     const {user} = useContext(AuthContext);
     console.log(user);
     const [favorites, setFavorites] = useState([]);
-    // if (loading) {
-    //     return <Loading></Loading>
-    // }
-    
-    // const email = user.email;
-
-    
-    
 
     const contextInfo = {
         favorites,
