@@ -3,6 +3,7 @@ import Banner from '../Components/Banner';
 import { useLoaderData } from 'react-router-dom';
 import FeaturedMovies from '../Components/FeaturedMovies';
 import TopPicks from '../Components/TopPicks';
+import AboutUs from '../Components/AboutUs';
 
 const Home = () => {
     const moviesData = useLoaderData()
@@ -16,6 +17,9 @@ const Home = () => {
             </div>
             <div>
                 <TopPicks></TopPicks>
+            </div>
+            <div>
+                <AboutUs></AboutUs>
             </div>
         </div>
     );
