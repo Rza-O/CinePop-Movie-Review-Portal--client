@@ -34,7 +34,7 @@ const MovieCard = ({movie}) => {
                 <p className=''>Runtime: {duration} min</p>
                 <p>Released Year: {year}</p>
                 <div className="card-actions justify-center flex-grow">
-                    <Link to={`/details/${_id}`}><button className="btn bg-secondary text-white">View Details</button></Link>
+                    <Link to={`/movies/${_id}`}><button className="btn bg-secondary text-white">View Details</button></Link>
                 </div>
             </div>
         </div >

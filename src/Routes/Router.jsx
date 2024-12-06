@@ -36,14 +36,9 @@ const router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/movies')
             },
             {
-                path: '/details/:id',
+                path: '/movies/:id',
                 element: <MovieDetails></MovieDetails>,
-                loader : async ({params}) => {
-                    const res = await fetch(`http://localhost:5000/movies/${params.id}`);
-                    const data = await res.json();
-                    const singleData = data.find(movie=> movie._id == params.id);
-                    return singleData;
-                }
+                loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`)
             }
         ]
     }
