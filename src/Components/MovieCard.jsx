@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Movie Poster.
 // Movie Title.
@@ -10,14 +11,14 @@ import React from 'react';
 
 
 const MovieCard = ({movie}) => {
-    const {title, poster, genres, duration, year, rating} = movie;
+    const {title, poster, genres, duration, year, rating, _id} = movie;
     console.log(genres);
     return (
         <div className="card flex bg-base-200 shadow-2xl">
             <figure>
                 <img
                     className='h-[500px] rounded w-full'
-                    src={movie.poster}
+                    src={poster}
                     alt="Movie" />
             </figure>
             <div className="card-body text-center space-y-2">
@@ -33,7 +34,7 @@ const MovieCard = ({movie}) => {
                 <p className=''>Runtime: {duration} min</p>
                 <p>Released Year: {year}</p>
                 <div className="card-actions justify-center flex-grow">
-                    <button className="btn bg-secondary text-white">View Details</button>
+                    <Link to={`/details/${_id}`}><button className="btn bg-secondary text-white">View Details</button></Link>
                 </div>
             </div>
         </div >

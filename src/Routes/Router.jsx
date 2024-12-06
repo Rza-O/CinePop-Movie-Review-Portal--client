@@ -6,6 +6,7 @@ import Login from '../Pages/Login';
 import Register from '../Pages/Register';
 import AddMovies from '../Pages/AddMovies';
 import AllMovies from '../Pages/AllMovies';
+import MovieDetails from '../Pages/MovieDetails';
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,16 @@ const router = createBrowserRouter([
                 path: '/allMovies',
                 element: <AllMovies></AllMovies>,
                 loader: () => fetch('http://localhost:5000/movies')
+            },
+            {
+                path: '/details/:id',
+                element: <MovieDetails></MovieDetails>,
+                loader : async ({params}) => {
+                    const res = await fetch(`http://localhost:5000/movies/${params.id}`);
+                    const data = await res.json();
+                    const singleData = data.find(movie=> movie._id == params.id);
+                    return singleData;
+                }
             }
         ]
     }
