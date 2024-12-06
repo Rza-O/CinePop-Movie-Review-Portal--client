@@ -29,8 +29,9 @@ const MovieDetails = () => {
                 console.log(data);
                 Swal.fire({
                     title: "Great!",
-                    text: "Movie Added Successfully!",
-                    icon: "success"
+                    text: "Movie Added to Your Favorites!",
+                    icon: "success",
+                    confirmButtonColor: "#72163E"
                 })
             }
         })

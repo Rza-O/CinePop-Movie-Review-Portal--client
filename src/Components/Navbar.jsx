@@ -21,7 +21,7 @@ const Navbar = () => {
         <li><NavLink to='/allMovies'>All Movies</NavLink></li>
         <li><NavLink to='/addMovies'>Add Movies</NavLink></li>
         <li><NavLink to='/favorites'>Favorites</NavLink></li>
-        <li><NavLink to='/nowPlaying'>Now Playing</NavLink></li>
+        <li><NavLink to='/contact'>Contact</NavLink></li>
     </>
     return (
         <div className="navbar bg-secondary text-white">

@@ -15,8 +15,8 @@ const MovieCard = ({ movie }) => {
             title: "Remove this movie from favorite?",
             icon: "question",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#72163E",
             confirmButtonText: "Yes, remove it!"
         }).then(result => {
             if (result.isConfirmed) {

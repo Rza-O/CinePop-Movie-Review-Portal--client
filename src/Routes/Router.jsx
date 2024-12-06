@@ -9,6 +9,7 @@ import AllMovies from '../Pages/AllMovies';
 import MovieDetails from '../Pages/MovieDetails';
 import Favorites from '../Pages/Favorites';
 import PrivateRoute from '../Private/PrivateRoute';
+import Contact from '../Components/Contact';
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: '/favorites',
                 element: <PrivateRoute><Favorites></Favorites></PrivateRoute>
+            },
+            {
+                path: '/contact',
+                element: <Contact></Contact>
             }
         ]
     }
