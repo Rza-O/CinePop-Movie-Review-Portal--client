@@ -1,18 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-// Movie Poster.
-// Movie Title.
-//     Genre.
-//     Duration.
-// Release Year.
-//     Rating.
-// “See Details” button.
+import { Rating } from 'react-simple-star-rating';
+import Swal from 'sweetalert2';
 
 
-const MovieCard = ({movie}) => {
-    const {title, poster, genres, duration, year, rating, _id} = movie;
-    console.log(genres);
+const MovieCard = ({ movie, favorites, setFavorites }) => {
+    const { title, poster, genres, duration, year, rating, _id, email } = movie;
+    // console.log(_id);
+
+
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(result => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/favorites/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            const remainingFav = favorites.filter(singleFav => singleFav._id !== _id);
+                            setFavorites(remainingFav);
+                        }
+                    })
+            }
+        })
+    }
+
+
+
+    
     return (
         <div className="card flex bg-base-200 shadow-2xl">
             <figure>
@@ -30,11 +60,16 @@ const MovieCard = ({movie}) => {
                         </div>)
                     }
                 </div>
-                <p>⭐{rating} / 5</p>
+                <div>
+                    <Rating initialValue={rating} readonly fillColor="#72163E" size={30} />
+                    <p>Out of 5</p>
+                </div>
                 <p className=''>Runtime: {duration} min</p>
                 <p>Released Year: {year}</p>
                 <div className="card-actions justify-center flex-grow">
-                    <Link to={`/movies/${_id}`}><button className="btn bg-secondary text-white">View Details</button></Link>
+                    {
+                        email ? <Link ><button onClick={() => handleDelete(_id)} className="btn bg-secondary text-white">Remove Favorite</button></Link> : <Link to={`/movies/${_id}`}><button className="btn bg-secondary text-white">View Details</button></Link>
+                    }
                 </div>
             </div>
         </div >
