@@ -17,7 +17,7 @@ const MovieDetails = () => {
         console.log(movieData);
 
         // Sending data to favorite collection
-        fetch('http://localhost:5000/favorites', {
+        fetch('https://cine-popcorn-server.vercel.app/favorites', {
             method: "POST",
             headers: {
                 "content-type" : "application/json"
@@ -50,7 +50,7 @@ const MovieDetails = () => {
             confirmButtonText: "Yes, remove it!"
         }).then(result => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/movies/${_id}`, {
+                fetch(`https://cine-popcorn-server.vercel.app/movies/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

@@ -11,7 +11,7 @@ const AllMovies = () => {
     const [movieData, setMovieData] = useState(data);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/movies?search=${search}`)
+        fetch(`https://cine-popcorn-server.vercel.app/movies?search=${search}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

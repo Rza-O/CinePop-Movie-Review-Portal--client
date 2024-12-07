@@ -13,7 +13,7 @@ const Favorites = () => {
     const { favorites, setFavorites } = useContext(FavoriteContext)
     
     useEffect(() => {
-        fetch(`http://localhost:5000/favorites?favOf=${user?.email}`)
+        fetch(`https://cine-popcorn-server.vercel.app/favorites?favOf=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

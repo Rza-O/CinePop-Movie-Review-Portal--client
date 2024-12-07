@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/movies')
+                loader: () => fetch('https://cine-popcorn-server.vercel.app/movies')
             },
             {
                 path: '/login',
@@ -39,12 +39,12 @@ const router = createBrowserRouter([
             {
                 path: '/allMovies',
                 element: <AllMovies></AllMovies>,
-                loader: () => fetch('http://localhost:5000/movies')
+                loader: () => fetch('https://cine-popcorn-server.vercel.app/movies')
             },
             {
                 path: '/movies/:id',
                 element: <PrivateRoute><MovieDetails></MovieDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`)
+                loader: ({ params }) => fetch(`https://cine-popcorn-server.vercel.app/movies/${params.id}`)
             },
             {
                 path: '/favorites',
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
             {
                 path: '/updateMovie/:id',
                 element: <UpdateMovie></UpdateMovie>,
-                loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`)
+                loader: ({ params }) => fetch(`https://cine-popcorn-server.vercel.app/movies/${params.id}`)
             }
         ]
     }

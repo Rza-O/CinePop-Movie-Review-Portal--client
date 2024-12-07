@@ -1,5 +1,6 @@
 import React from 'react';
 import cinema from '../assets/cinemahall.webp'
+import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
     return (
@@ -18,7 +19,7 @@ const AboutUs = () => {
                     <p>
                         More than just a reviewing website, <span className='font-bold'>CinePop</span> fosters a vibrant movie-lover community where users can participate in discussions, rate their favorite films, and share personal movie recommendations. Whether you're a casual viewer seeking entertainment or a film buff craving in-depth analysis, <span className='font-bold'>CinePop</span> empowers you to connect with the art of cinema in a personalized and engaging way.
                     </p>
-                    <div className='flex justify-center'><button className='btn bg-secondary text-white'>Get in touch</button></div>
+                    <div className='flex justify-center'><Link to='/contact'><button className='btn bg-secondary text-white'>Get in touch</button></Link></div>
                 </div>
             </div>
         </div>

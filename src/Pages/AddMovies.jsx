@@ -55,7 +55,7 @@ const AddMovies = () => {
 
 
         // Sending Data to the Database
-        fetch('http://localhost:5000/movies', {
+        fetch('https://cine-popcorn-server.vercel.app/movies', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

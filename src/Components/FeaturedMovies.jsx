@@ -6,7 +6,7 @@ const FeaturedMovies = () => {
     const [sortedMovie, setSortedMovie] = useState([]);
     console.log(sortedMovie);
     useEffect(() => {
-        fetch('http://localhost:5000/movies?sortBy=rating')
+        fetch('https://cine-popcorn-server.vercel.app/movies?sortBy=rating')
             .then(res => res.json())
             .then(data => setSortedMovie(data))
     }, []);

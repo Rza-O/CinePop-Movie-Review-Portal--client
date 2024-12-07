@@ -42,7 +42,7 @@ const UpdateMovie = () => {
 
     // Fetch movie data by ID
     useEffect(() => {
-        fetch(`http://localhost:5000/movies/${id}`)
+        fetch(`https://cine-popcorn-server.vercel.app/movies/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
@@ -74,7 +74,7 @@ const UpdateMovie = () => {
 
         const updatedMovieData = { ...data, rating, duration: parseInt(data.duration), year: parseInt(data.year), addedBy };
 
-        fetch(`http://localhost:5000/movies/${id}`, {
+        fetch(`https://cine-popcorn-server.vercel.app/movies/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

@@ -4,7 +4,7 @@ const TopPicks = () => {
     const [picks, setPicks] = useState([]);
     console.log(picks);
     useEffect(() => {
-        fetch('http://localhost:5000/topPicks')
+        fetch('https://cine-popcorn-server.vercel.app/topPicks')
             .then(res => res.json())
             .then(data => setPicks(data))
     }, []);
