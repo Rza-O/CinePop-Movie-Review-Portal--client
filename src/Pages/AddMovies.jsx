@@ -62,7 +62,6 @@ const AddMovies = () => {
             return
         }
         const movieData = { ...data, rating, duration: parseInt(data.duration), year: parseInt(data.year), addedBy }
-        console.log(movieData);
 
 
         // Sending Data to the Database
@@ -76,7 +75,6 @@ const AddMovies = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    console.log(data);
                     Swal.fire({
                         title: "Great!",
                         text: "Movie Added Successfully!",
@@ -97,9 +95,6 @@ const AddMovies = () => {
                 <p className='font-semibold'>Added to our database and review it for our other user!</p>
             </div>
             <div className='flex flex-col lg:flex-row  items-center'>
-                {/* <div className='border border-white'>
-                    <img src={reviewImg} alt="" className='w-3/4 mx-auto'/>
-                </div> */}
                 <div className="bg-base-100 w-11/12 mx-auto">
                     {/* form Starts here */}
                     <form className="card-body" onSubmit={handleSubmit(handleAddMovies)}>
@@ -110,6 +105,7 @@ const AddMovies = () => {
                                     <span className="label-text font-bold">Movie Title</span>
                                 </label>
                                 <input {...register('title', {
+                                    required: "tittle has to be added",
                                     validate: {
                                         minLength: (value) =>
                                             value.length >= 2 || "Movie title at least has to be 2 character long"
@@ -123,6 +119,7 @@ const AddMovies = () => {
                                     <span className="label-text font-bold">Poster URL</span>
                                 </label>
                                 <input {...register('poster', {
+                                    required: "poster URL has to be added",
                                     validate: {
                                         isLink: (value) =>
                                             isValidUrl(value) || "Poster has to be a valid URL"
@@ -141,6 +138,7 @@ const AddMovies = () => {
                                     <span className="label-text font-bold">Runtime</span>
                                 </label>
                                 <input {...register('duration', {
+                                    required: "duration has to be added",
                                     validate: {
                                         minLength: (value) =>
                                             value >= 60 || "Film duration has to be greater than 60 mins"
@@ -154,7 +152,7 @@ const AddMovies = () => {
                                 <label className="label">
                                     <span className="label-text font-bold">Release Year</span>
                                 </label>
-                                <select {...register('year', { required: true })} className="input input-bordered" defaultValue="" >
+                                <select {...register('year', { required: 'released year has to be selected' })} className="input input-bordered" defaultValue="" >
                                     <option value="" disabled>
                                         Select Year
                                     </option>
@@ -164,6 +162,7 @@ const AddMovies = () => {
                                         </option>
                                     ))}
                                 </select>
+                                {errors?.year && <p className="text-xs mt-1 text-secondary">{errors.year.message}</p>}
                             </div>
                         </div>
 
@@ -173,7 +172,7 @@ const AddMovies = () => {
                                 <span className="label-text font-bold">Genres</span>
                             </label>
                             <Select closeMenuOnSelect={false}
-                                {...register('genres')}
+                                {...register('genres', { required: "genres has to be selected", })}
                                 components={animatedComponents}
                                 placeholder='Select Genres'
                                 options={options}
@@ -183,6 +182,7 @@ const AddMovies = () => {
                                     setValue('genres', selectedOptions ? selectedOptions.map((option) => option.value) : [])
                                 }}
                             />
+                            {errors?.genres && <p className="text-xs mt-1 text-secondary">{errors.genres.message}</p>}
                         </div>
 
 
@@ -192,6 +192,7 @@ const AddMovies = () => {
                                 <span className="label-text">Summary</span>
                             </label>
                             <textarea {...register('summary', {
+                                required: "summary has to be added",
                                 validate: {
                                     minLength: (value) =>
                                         value.length >= 10 || 'Summary has to be at least 10 characters long'

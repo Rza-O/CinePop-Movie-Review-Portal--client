@@ -7,7 +7,6 @@ export const FavoriteContext = createContext()
 const FavoritesProvider = ({ children }) => {
 
     const {user} = useContext(AuthContext);
-    console.log(user);
     const [favorites, setFavorites] = useState([]);
 
     const contextInfo = {

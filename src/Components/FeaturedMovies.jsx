@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const FeaturedMovies = () => {
     const [sortedMovie, setSortedMovie] = useState([]);
-    console.log(sortedMovie);
     useEffect(() => {
         fetch('https://cine-popcorn-server.vercel.app/movies?sortBy=rating')
             .then(res => res.json())

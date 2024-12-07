@@ -7,7 +7,6 @@ import { FaClock } from "react-icons/fa";
 import { AiFillStar } from "react-icons/ai";
 
 const Banner = ({ moviesData }) => {
-    console.log(moviesData);
     return (
         <div className='w-11/12 mx-auto py-8'>
             <Swiper

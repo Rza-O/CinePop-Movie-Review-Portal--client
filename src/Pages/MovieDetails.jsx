@@ -14,7 +14,6 @@ const MovieDetails = () => {
     const handleFavBtn = () => {
         const email = user.email;
         const movieData = { title, poster, genres, year, duration, rating, summary, email};
-        console.log(movieData);
 
         // Sending data to favorite collection
         fetch('https://cine-popcorn-server.vercel.app/favorites', {
@@ -27,7 +26,6 @@ const MovieDetails = () => {
         .then(res=> res.json())
         .then(data => {
             if (data.insertedId) {
-                console.log(data);
                 Swal.fire({
                     title: "Great!",
                     text: "Movie Added to Your Favorites!",
@@ -55,7 +53,6 @@ const MovieDetails = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Removed!",

@@ -21,7 +21,6 @@ const Login = () => {
     const handleSocialLogin = () => {
         handleGoogleLogin()
             .then(data => {
-                console.log(data);
                 navigate(location?. state? location.state : '/')
             })
     }
@@ -29,12 +28,10 @@ const Login = () => {
     // Handling login with react form hook
     const loginForm = (data) => {
         const { email, password } = data;
-        console.log(email, password);
         setError('')
         handleLogin(email, password)
             .then(res => {
                 const user = res.user;
-                console.log(user);
                 setUser(user);
                 navigate(location?.state ? location.state : '/')
             })

@@ -9,13 +9,11 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const location = useLocation();
     const navigate = useNavigate();
-    console.log(user);
     const [errCode, setErrCode] = useState('');
 
     const handleSocialLogin = () => {
         handleGoogleLogin()
         .then(res=> {
-            console.log(res.user);
             navigate('/');
         })
     }
@@ -25,22 +23,16 @@ const Register = () => {
         handleRegister(email, password)
             .then(res => {
                 const user = res.user
-                console.log(user);
                 setUser(user);
                 updateUserProfile({displayName: name, photoURL: photoURL})
-                // .then(res=> {
-                //     console.log(res);
-                // })
 
                 // Saving the user info in the DB
                 navigate(location?.state? location.state : '/')
                 .catch(err=> {
-                    console.log(err.code, err.message);
                     setErrCode(err.code, err.message);
                 })
             })
             .catch(err => {
-                console.log(err);
                 setErrCode(err.code, err.message);
             })
     }

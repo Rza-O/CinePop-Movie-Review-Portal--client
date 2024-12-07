@@ -7,16 +7,15 @@ import { FavoriteContext } from '../Context/FavoritesProvider';
 
 const Favorites = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
+
     const email = user.email
-    console.log(email);
+
     const { favorites, setFavorites } = useContext(FavoriteContext)
     
     useEffect(() => {
         fetch(`https://cine-popcorn-server.vercel.app/favorites?favOf=${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setFavorites(data);
             })
     }, [favorites]);

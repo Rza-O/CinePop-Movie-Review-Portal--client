@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 const TopPicks = () => {
     const [picks, setPicks] = useState([]);
-    console.log(picks);
     useEffect(() => {
         fetch('https://cine-popcorn-server.vercel.app/topPicks')
             .then(res => res.json())

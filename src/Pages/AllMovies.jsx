@@ -14,14 +14,11 @@ const AllMovies = () => {
         fetch(`https://cine-popcorn-server.vercel.app/movies?search=${search}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setMovieData(data);
             })
     }, [search]);
 
 
-
-    console.log(movieData);
     return (
         <div className='w-11/12 mx-auto mb-8'>
             <h2 className='mt-6 text-center text-4xl font-bold'>Our Movies Collection</h2>

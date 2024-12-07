@@ -103,13 +103,6 @@ const UpdateMovie = () => {
                     navigate('/allMovies');
                 }
             })
-            .catch((err) => {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Failed to update movie',
-                    icon: 'error',
-                });
-            });
     };
 
 
@@ -131,15 +124,12 @@ const UpdateMovie = () => {
                                 </label>
                                 <input
                                     {...register('title', {
+                                        required: "tittle has to be added",
                                         validate: {
                                             minLength: (value) =>
                                                 value.length >= 2 || 'Movie title must be at least 2 characters long',
                                         },
-                                    })}
-                                    type="text"
-                                    placeholder="Title"
-                                    className="input input-bordered"
-                                    required
+                                    })}type="text" placeholder="Title" className="input input-bordered"
                                 />
                                 {errors?.title && <p className="text-xs mt-1 text-secondary">{errors.title.message}</p>}
                             </div>
@@ -150,15 +140,12 @@ const UpdateMovie = () => {
                                 </label>
                                 <input
                                     {...register('poster', {
+                                        required: "poster has to be added",
                                         validate: {
                                             isLink: (value) =>
                                                 isValidUrl(value) || 'Poster must be a valid URL',
                                         },
-                                    })}
-                                    type="text"
-                                    placeholder="Poster URL"
-                                    className="input input-bordered"
-                                    required
+                                    })}type="text" placeholder="Poster URL" className="input input-bordered" 
                                 />
                                 {errors?.poster && <p className="text-xs mt-1 text-secondary">{errors.poster.message}</p>}
                             </div>
@@ -172,14 +159,11 @@ const UpdateMovie = () => {
                                 </label>
                                 <input
                                     {...register('duration', {
+                                        required: "duration has to be added",
                                         validate: {
                                             minLength: (value) => value >= 60 || 'Film duration must be greater than 60 minutes',
                                         },
-                                    })}
-                                    type="number"
-                                    placeholder="Duration"
-                                    className="input input-bordered [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                                    required
+                                    })} type="number" placeholder="Duration" className="input input-bordered [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                                 />
                                 {errors?.duration && <p className="text-xs mt-1 text-secondary">{errors.duration.message}</p>}
                             </div>
@@ -188,7 +172,7 @@ const UpdateMovie = () => {
                                 <label className="label">
                                     <span className="label-text font-bold">Release Year</span>
                                 </label>
-                                <select {...register('year', { required: true })} className="input input-bordered" defaultValue="">
+                                <select {...register('year', { required: 'Released year has to be selected' })} className="input input-bordered" defaultValue="">
                                     <option value="" disabled>
                                         Select Year
                                     </option>
@@ -198,6 +182,7 @@ const UpdateMovie = () => {
                                         </option>
                                     ))}
                                 </select>
+                                {errors?.year && <p className="text-xs mt-1 text-secondary">{errors.year.message}</p>}
                             </div>
                         </div>
 
@@ -208,17 +193,17 @@ const UpdateMovie = () => {
                             </label>
                             <Select
                                 closeMenuOnSelect={false}
-                                {...register('genres')}
+                                {...register('genres', { required: "genres has to be added", })}
                                 components={animatedComponents}
                                 placeholder="Select Genres"
                                 options={options}
                                 
                                 isMulti
-                                required
                                 onChange={(selectedOptions) => {
                                     setValue('genres', selectedOptions ? selectedOptions.map((option) => option.value) : []);
                                 }}
                             />
+                            {errors?.genres && <p className="text-xs mt-1 text-secondary">{errors.genres.message}</p>}
                         </div>
 
                         {/* Summary */}
@@ -228,13 +213,11 @@ const UpdateMovie = () => {
                             </label>
                             <textarea
                                 {...register('summary', {
+                                    required: "summary has to be added",
                                     validate: {
                                         minLength: (value) => value.length >= 10 || 'Summary must be at least 10 characters long',
                                     },
-                                })}
-                                className="textarea textarea-bordered"
-                                placeholder="Write a brief summary here"
-                                required
+                                })} className="textarea textarea-bordered" placeholder="Write a brief summary here"
                             ></textarea>
                             {errors?.summary && <p className="text-xs mt-1 text-secondary">{errors.summary.message}</p>}
                         </div>
