@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { data, useLoaderData } from 'react-router-dom';
+import { data, useLoaderData, useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
 import { AuthContext } from '../Context/AuthProvider';
 import Swal from 'sweetalert2';
@@ -7,7 +7,8 @@ import Swal from 'sweetalert2';
 const MovieDetails = () => {
     const {user} = useContext(AuthContext);
     const movie = useLoaderData();
-    const {title, poster, genres, year, duration, rating, summary} = movie;
+    const navigate = useNavigate()
+    const {title, poster, genres, year, duration, rating, summary, _id} = movie;
 
     // Sending favorites movie data to the server
     const handleFavBtn = () => {
@@ -15,7 +16,7 @@ const MovieDetails = () => {
         const movieData = { title, poster, genres, year, duration, rating, summary, email};
         console.log(movieData);
 
-        // Sending data
+        // Sending data to favorite collection
         fetch('http://localhost:5000/favorites', {
             method: "POST",
             headers: {
@@ -36,6 +37,38 @@ const MovieDetails = () => {
             }
         })
     }
+
+
+    // delete btn functionality for single movie deletion from the movies collection
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: "Remove movie from our site?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#72163E",
+            confirmButtonText: "Yes, remove it!"
+        }).then(result => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/movies/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Removed!",
+                                text: "Movie successfully has been removed from our site.",
+                                icon: "success"
+                            });
+                            navigate('/allMovies')
+                        }
+                    })
+            }
+        })
+    }
+
 
     return (
         <div className='my-12 w-10/12 mx-auto'>
@@ -66,7 +99,7 @@ const MovieDetails = () => {
                     </div>
                     <div className="card-actions justify-center mt-3">
                         <button className="btn bg-secondary text-white">Update</button>
-                        <button className="btn bg-secondary text-white">Delete</button>
+                        <button onClick={() => handleDelete(_id)} className="btn bg-secondary text-white">Delete</button>
                         <button onClick={handleFavBtn} className="btn bg-secondary text-white">Add to Favorites</button>
                     </div>
                 </div>
