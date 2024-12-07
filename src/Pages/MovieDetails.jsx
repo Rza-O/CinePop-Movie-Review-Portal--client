@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { data, useLoaderData, useNavigate } from 'react-router-dom';
+import { data, Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
 import { AuthContext } from '../Context/AuthProvider';
 import Swal from 'sweetalert2';
@@ -98,7 +98,7 @@ const MovieDetails = () => {
                         <p><span className='font-bold'>Summary:</span> {summary}</p>
                     </div>
                     <div className="card-actions justify-center mt-3">
-                        <button className="btn bg-secondary text-white">Update</button>
+                        <Link to={`/updateMovie/${_id}`}><button className="btn bg-secondary text-white">Update</button></Link>
                         <button onClick={() => handleDelete(_id)} className="btn bg-secondary text-white">Delete</button>
                         <button onClick={handleFavBtn} className="btn bg-secondary text-white">Add to Favorites</button>
                     </div>

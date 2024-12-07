@@ -55,7 +55,7 @@ const MovieCard = ({ movie }) => {
                 <h2 className='text-2xl text-secondary font-bold'>{title}</h2>
                 <div className='flex gap-4 justify-center'>
                     {
-                        genres.map(genre => <div>
+                        genres.map((genre, idx) => <div key={idx}>
                             <p className='p-1 rounded bg-secondary/90 text-xs text-white'>{genre}</p>
                         </div>)
                     }

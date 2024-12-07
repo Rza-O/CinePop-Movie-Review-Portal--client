@@ -13,6 +13,7 @@ const AllMovies = () => {
         fetch(`http://localhost:5000/movies?search=${search}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 setMovieData(data);
             })
     }, [search]);
@@ -21,7 +22,7 @@ const AllMovies = () => {
 
     console.log(movieData);
     return (
-        <div className='w-11/12 mx-auto'>
+        <div className='w-11/12 mx-auto mb-8'>
             <h2 className='mt-6 text-center text-4xl font-bold'>Our Movies Collection</h2>
             <div className='flex justify-center my-5'>
                 <input

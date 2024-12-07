@@ -16,7 +16,7 @@ const TopPicks = () => {
             </div>
             <div className='grid w-11/12 md:max-w-6xl md:grid-cols-5 mx-auto gap-4'>
                 {
-                    picks.map((movie, index) => <div className="relative bg-white border border-primary shadow-lg rounded-md overflow-hidden">
+                    picks.map((movie, index) => <div key={index} className="relative bg-white border border-primary shadow-lg rounded-md overflow-hidden">
                         <div className="absolute top-2 right-2 bg-secondary text-white text-xs font-bold px-2 py-1 rounded">
                             TOP PICKS
                         </div>

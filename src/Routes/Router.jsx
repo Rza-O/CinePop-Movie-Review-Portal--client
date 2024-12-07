@@ -10,6 +10,7 @@ import MovieDetails from '../Pages/MovieDetails';
 import Favorites from '../Pages/Favorites';
 import PrivateRoute from '../Private/PrivateRoute';
 import Contact from '../Components/Contact';
+import UpdateMovie from '../Pages/UpdateMovie';
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact></Contact>
+            },
+            {
+                path: '/updateMovie/:id',
+                element: <UpdateMovie></UpdateMovie>,
+                loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`)
             }
         ]
     }
