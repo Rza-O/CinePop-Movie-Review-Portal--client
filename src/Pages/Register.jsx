@@ -1,18 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import { useForm } from 'react-hook-form';
 
 const Register = () => {
     const { handleRegister, handleGoogleLogin, setUser, updateUserProfile, user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const location = useLocation();
+    const navigate = useNavigate();
     console.log(user);
+    const [errCode, setErrCode] = useState('');
 
     const handleSocialLogin = () => {
         handleGoogleLogin()
         .then(res=> {
             console.log(res.user);
+            navigate('/');
         })
     }
 
@@ -29,13 +33,15 @@ const Register = () => {
                 // })
 
                 // Saving the user info in the DB
-                
+                navigate(location?.state? location.state : '/')
                 .catch(err=> {
                     console.log(err.code, err.message);
+                    setErrCode(err.code, err.message);
                 })
             })
             .catch(err => {
-                console.log(err.code, err.message);
+                console.log(err);
+                setErrCode(err.code, err.message);
             })
     }
 
@@ -89,8 +95,7 @@ const Register = () => {
 
                         {errors?.password && <p className='text-xs mt-1 text-secondary'>{errors.password.message}</p>}
                     </div>
-
-
+                    {errCode && <p className='text-xs mt-1 text-secondary'>{errCode}</p>}
                     <div className="form-control mt-6 mb-2">
                         <button className="btn bg-secondary text-white">Sign Up</button>
                     </div>

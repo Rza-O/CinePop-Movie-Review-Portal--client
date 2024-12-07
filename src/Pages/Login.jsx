@@ -3,11 +3,13 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Context/AuthProvider';
 import googleIcon from '../assets/google.png';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     // context for auth
     const { handleGoogleLogin, setUser, handleLogin } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     // React form hook
     const { register, handleSubmit } = useForm();
@@ -20,12 +22,13 @@ const Login = () => {
         handleGoogleLogin()
             .then(data => {
                 console.log(data);
+                navigate(location?. state? location.state : '/')
             })
     }
 
     // Handling login with react form hook
     const loginForm = (data) => {
-        const { email, password } = data
+        const { email, password } = data;
         console.log(email, password);
         setError('')
         handleLogin(email, password)
@@ -33,6 +36,7 @@ const Login = () => {
                 const user = res.user;
                 console.log(user);
                 setUser(user);
+                navigate(location?.state ? location.state : '/')
             })
             .catch(err=> {
                 setError({...err, login: err.code})
@@ -65,8 +69,8 @@ const Login = () => {
                     </div>
                     {
                         error.login && (
-                            <label className="label text-sm text-red-600">
-                                {error.login}
+                            <label className="label text-xs text-red-600">
+                                <p>Email or Password is invalid</p>
                             </label>
                         )
                     }
