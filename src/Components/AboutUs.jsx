@@ -8,7 +8,7 @@ const AboutUs = () => {
                 <h2 className='text-4xl font-bold '>About Us</h2>
                 <p>Our mission is to bring all cinephiles around the world to be a part of our community</p>
             </div>
-            <div className='flex flex-col lg:flex-row space-x-9 space-y-10 border border-secondary rounded-xl p-6 shadow-xl bg-base-100'>
+            <div className='flex flex-col lg:flex-row space-x-9 space-y-10 border rounded-xl p-6 shadow-xl bg-base-100'>
                 <div className='lg:w-1/2'>
                     <img src={cinema} className='rounded-xl h-full' alt="" />
                 </div>
