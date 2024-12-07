@@ -15,7 +15,7 @@ const AddMovies = () => {
     const { user } = useContext(AuthContext);
     const addedBy = user?.email;
     // React form hook
-    const { register, handleSubmit, setValue, formState: {errors} } = useForm();
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm();
     // Rating state
     const [rating, setRating] = useState(0);
     // error state
@@ -42,11 +42,22 @@ const AddMovies = () => {
         { value: 'Sci-fi', label: 'Sci-fi' },
     ]
 
+    // validating url
+    const isValidUrl = (url) => {
+        try {
+            new URL(url);
+            return true;
+        }
+        catch {
+            return false;
+        }
+    };
+
 
     // Add movies form submission with react form hook
     const handleAddMovies = (data) => {
         setError('')
-        if(rating === 0){
+        if (rating === 0) {
             setError('Movie has to be rated')
             return
         }
@@ -62,17 +73,17 @@ const AddMovies = () => {
             },
             body: JSON.stringify(movieData)
         })
-        .then(res=> res.json())
-        .then(data=> {
-            if(data.insertedId){
-                console.log(data);
-                Swal.fire({
-                    title: "Great!",
-                    text: "Movie Added Successfully!",
-                    icon: "success"
-                })
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    console.log(data);
+                    Swal.fire({
+                        title: "Great!",
+                        text: "Movie Added Successfully!",
+                        icon: "success"
+                    })
+                }
+            })
     }
 
 
@@ -90,7 +101,7 @@ const AddMovies = () => {
                     <img src={reviewImg} alt="" className='w-3/4 mx-auto'/>
                 </div> */}
                 <div className="bg-base-100 w-11/12 mx-auto">
-                {/* form Starts here */}
+                    {/* form Starts here */}
                     <form className="card-body" onSubmit={handleSubmit(handleAddMovies)}>
                         <div className='flex gap-2'>
                             {/* Title input */}
@@ -114,7 +125,7 @@ const AddMovies = () => {
                                 <input {...register('poster', {
                                     validate: {
                                         isLink: (value) =>
-                                            /^(https?:\/\/)?([\w\-]+(\.[\w\-]+)+)([\/\w\-?.=&]*)*$/.test(value) || "Poster has to be a valid URL"
+                                            isValidUrl(value) || "Poster has to be a valid URL"
                                     }
                                 })} type="text" placeholder="poster" className="input input-bordered" required />
                                 {errors?.poster && <p className='text-xs mt-1 text-secondary'>{errors.poster.message}</p>}
@@ -138,7 +149,7 @@ const AddMovies = () => {
                                 {errors.duration && <p className='text-xs mt-1 text-secondary'>{errors.duration.message}</p>}
                             </div>
 
-                            
+
                             <div className="form-control w-1/2">
                                 <label className="label">
                                     <span className="label-text font-bold">Release Year</span>
@@ -182,7 +193,7 @@ const AddMovies = () => {
                             </label>
                             <textarea {...register('summary', {
                                 validate: {
-                                    minLength: (value) => 
+                                    minLength: (value) =>
                                         value.length >= 10 || 'Summary has to be at least 10 characters long'
                                 }
                             })} className="textarea textarea-bordered" placeholder="Write a brief summary here" required></textarea>
@@ -203,7 +214,7 @@ const AddMovies = () => {
                                     fillColor="#72163E"
                                     emptyColor="gray"
                                     transition
-                                    
+
                                 />
                                 <span>{rating} / 5</span>
                             </div>

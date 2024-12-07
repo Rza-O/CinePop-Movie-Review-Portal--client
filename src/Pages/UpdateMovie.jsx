@@ -36,6 +36,17 @@ const UpdateMovie = () => {
         { value: 'Sci-fi', label: 'Sci-fi' },
     ];
 
+    // url validation
+    const isValidUrl = (url) => {
+        try {
+            new URL(url);
+            return true;
+        }
+        catch {
+            return false;
+        }
+    };
+
     // Generating years programmatically
     const currentYear = new Date().getFullYear();
     const years = Array.from({ length: currentYear - 1971 + 1 }, (_, index) => currentYear - index);
@@ -141,7 +152,7 @@ const UpdateMovie = () => {
                                     {...register('poster', {
                                         validate: {
                                             isLink: (value) =>
-                                                /^(https?:\/\/)?([\w\-]+(\.[\w\-]+)+)([\/\w\-?.=&]*)*$/.test(value) || 'Poster must be a valid URL',
+                                                isValidUrl(value) || 'Poster must be a valid URL',
                                         },
                                     })}
                                     type="text"
