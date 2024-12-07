@@ -34,11 +34,11 @@ const Favorites = () => {
                     }
                 </div>
                     : <div className='space-y-5'>
-                        <div className='flex justify-center'><img className='h-[400px]' src={emptyPage} alt="" /></div>
                         <div className='text-center space-y-2'>
                             <h2 className='text-3xl font-bold'>Wow! Such Empty!</h2>
                             <p>Please add your favorite movies here</p>
                         </div>
+                        <div className='flex justify-center'><img className='h-[400px] xl:h-[600px]' src={emptyPage} alt="" /></div>
                     </div>
             }
         </div>

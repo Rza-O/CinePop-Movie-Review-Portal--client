@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import MovieCard from '../Components/MovieCard';
+import empty from '../assets/nodata.svg'
 
 const AllMovies = () => {
     const data = useLoaderData()
@@ -26,7 +27,7 @@ const AllMovies = () => {
             <h2 className='mt-6 text-center text-4xl font-bold'>Our Movies Collection</h2>
             <div className='flex justify-center my-5'>
                 <input
-                onChange={(e)=> setSearch(e.target.value)}
+                    onChange={(e) => setSearch(e.target.value)}
                     type="text"
                     name='search'
                     placeholder="🔍 Search movies"
@@ -37,6 +38,15 @@ const AllMovies = () => {
                     movieData.map((movie) => <MovieCard movie={movie}></MovieCard>)
                 }
             </div>
+            {
+                movieData.length === 0 && <div className='space-y-5'>
+                    <div className='text-center space-y-2'>
+                        <h2 className='text-3xl font-bold'>Wow! Such Empty!</h2>
+                        <p>Please add your favorite movies here</p>
+                    </div>
+                    <div className='flex justify-center'><img className='h-[400px] xl:h-[600px]' src={empty} alt="" /></div>
+                </div>
+            }
         </div>
     );
 };
