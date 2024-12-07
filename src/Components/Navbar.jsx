@@ -43,7 +43,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-secondary rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-secondary rounded-box z-[10] mt-3 w-52 p-2 shadow">
                             {links}
                     </ul>
                 </div>
@@ -90,8 +90,8 @@ const Navbar = () => {
                         <a className="btn" onClick={handleLogOut}>Log out</a> 
                     </div>
                     : <div className='flex gap-2'>
-                        <NavLink to='/login'><a className="btn">Login</a></NavLink>
-                        <NavLink to='/register'><a className="btn">Register</a></NavLink>
+                            <NavLink to='/login'><a className="btn btn-sm sm:btn-md">Login</a></NavLink>
+                            <NavLink to='/register'><a className="btn btn-sm sm:btn-md">Register</a></NavLink>
                     </div>
                 }
             </div>

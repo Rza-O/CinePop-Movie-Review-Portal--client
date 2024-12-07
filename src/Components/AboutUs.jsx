@@ -11,7 +11,7 @@ const AboutUs = () => {
             </div>
             <div className='flex flex-col lg:flex-row space-x-9 space-y-10 border rounded-xl p-6 shadow-xl bg-base-100'>
                 <div className='lg:w-1/2'>
-                    <img src={cinema} className='rounded-xl h-full' alt="" />
+                    <img src={cinema} className='rounded-xl md:h-full' alt="" />
                 </div>
                 <div className='lg:w-1/2 space-y-6 flex flex-col justify-center items-center'>
                     <p><span className='font-bold'>CinePop</span> is a dynamic cinema reviewing platform designed for movie enthusiasts to explore, share, and engage with cinematic experiences. The website offers a rich database of movie reviews, user ratings, and detailed film analyses, making it a go-to hub for discovering what to watch next. <span className='font-bold'>CinePop</span> combines sleek design with intuitive navigation, allowing users to effortlessly browse genres, check trending films, and dive into insightful critiques written by a passionate community of cinephiles.

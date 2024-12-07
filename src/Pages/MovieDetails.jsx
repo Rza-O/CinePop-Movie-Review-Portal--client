@@ -68,7 +68,7 @@ const MovieDetails = () => {
 
 
     return (
-        <div className='my-12 w-10/12 mx-auto'>
+        <div className='my-12 w-10/12 mx-auto 2xl:my-40 '>
             <div className="card lg:card-side bg-base-100 shadow-xl">
                 <figure>
                     <img
