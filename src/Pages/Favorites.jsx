@@ -3,6 +3,7 @@ import { AuthContext } from '../Context/AuthProvider';
 import MovieCard from '../Components/MovieCard';
 import emptyPage from '../assets/empty.svg'
 import { FavoriteContext } from '../Context/FavoritesProvider';
+import FavoritesTable from '../Components/FavoritesTable';
 
 
 const Favorites = () => {
@@ -27,9 +28,10 @@ const Favorites = () => {
         <div className='w-11/12 mx-auto my-8 space-y-8'>
             <h2 className='text-4xl font-bold text-center'>Your Favorites </h2>
             {
-                favorites.length > 0? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4'>
+                favorites.length > 0? <div className='min-h-[600px]'>
                     {
-                        favorites.map((favorite) => <MovieCard movie={favorite} setFavorites={setFavorites}></MovieCard>)
+                        // favorites.map((favorite) => <MovieCard movie={favorite} setFavorites={setFavorites}></MovieCard>)
+                        <FavoritesTable movies={favorites} setMovies={setFavorites}></FavoritesTable>
                     }
                 </div>
                     : <div className='space-y-5'>
