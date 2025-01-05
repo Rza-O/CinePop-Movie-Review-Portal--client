@@ -47,6 +47,8 @@ This project is built to meet modern web application standards while focusing on
 - Server-Side: MongoDB credentials and other sensitive data are managed with .env files.
 ## Live Website Link
 - https://cine-popcorn.surge.sh/
+## Server Repo Link
+- https://github.com/Rza-O/CinePop-Server-express-mongoDBb
 ### Framework and NPM Packages 📦  
 
 This project leverages the following frameworks and npm packages to enhance functionality and user experience:  
