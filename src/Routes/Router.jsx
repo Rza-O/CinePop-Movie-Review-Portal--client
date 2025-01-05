@@ -12,6 +12,7 @@ import PrivateRoute from '../Private/PrivateRoute';
 import Contact from '../Components/Contact';
 import UpdateMovie from '../Pages/UpdateMovie';
 import ErrorPage from '../Pages/ErrorPage';
+import About from '../Pages/About';
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
                 path: '/updateMovie/:id',
                 element: <UpdateMovie></UpdateMovie>,
                 loader: ({ params }) => fetch(`https://cine-popcorn-server.vercel.app/movies/${params.id}`)
+            },
+            {
+                path: '/about',
+                element: <About></About>
             }
         ]
     }

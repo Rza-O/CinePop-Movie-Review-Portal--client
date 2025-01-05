@@ -68,8 +68,8 @@ const MovieDetails = () => {
 
 
     return (
-        <div className='my-12 w-10/12 mx-auto 2xl:my-40 '>
-            <div className="card lg:card-side bg-base-100 shadow-xl">
+        <div className='my-12 w-10/12 mx-auto '>
+            <div className="card  bg-base-100 shadow-xl pt-7">
                 <figure>
                     <img
                         className=' h-[500px]'

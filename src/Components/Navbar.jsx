@@ -21,10 +21,19 @@ const Navbar = () => {
         <li><NavLink to='/allMovies'>All Movies</NavLink></li>
         <li><NavLink to='/addMovies'>Add Movies</NavLink></li>
         <li><NavLink to='/favorites'>Favorites</NavLink></li>
+        <li><NavLink to='/about'>About Us</NavLink></li>
         <li><NavLink to='/contact'>Contact</NavLink></li>
     </>
+
+    const publicLinks = <>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/allMovies'>All Movies</NavLink></li>
+        <li><NavLink to='/about'>About Us</NavLink></li>
+        <li><NavLink to='/contact'>Contact</NavLink></li>
+    </>
+    
     return (
-        <div className="navbar bg-secondary text-white">
+        <div className="navbar bg-secondary text-white px-5 md:px-8 lg:px-11 pt-3 sticky top-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,14 +53,14 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-secondary rounded-box z-[10] mt-3 w-52 p-2 shadow">
-                            {links}
+                            {user ? links : publicLinks}
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">CinePop</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    {links}
+                    {user ? links : publicLinks}
                 </ul>
             </div>
             <div className="navbar-end gap-2">

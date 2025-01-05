@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
 import Swal from 'sweetalert2';
 import { FavoriteContext } from '../Context/FavoritesProvider';
+import { IoStopwatchOutline } from 'react-icons/io5';
+import { SlCalender } from 'react-icons/sl';
 
 
 const MovieCard = ({ movie }) => {
-    const { title, poster, genres, duration, year, rating, _id, email } = movie;
+    const { title, poster, genres, duration, year, rating, _id, email, summary } = movie;
     const { favorites, setFavorites } = useContext(FavoriteContext)
 
 
@@ -43,15 +45,15 @@ const MovieCard = ({ movie }) => {
 
     
     return (
-        <div className="card flex bg-base-200 shadow-2xl">
-            <figure>
+        <div className="card flex bg-base-200 shadow-2xl items-center justify-center flex-col">
+            <figure className='pt-10 '>
                 <img
-                    className='h-[500px] rounded w-full'
+                    className='rounded h-[300px]'
                     src={poster}
                     alt="Movie" />
             </figure>
             <div className="card-body text-center space-y-2">
-                <h2 className='text-2xl text-secondary font-bold'>{title}</h2>
+                <h2 className='text-xl text-secondary font-bold'>{title}</h2>
                 <div className='flex gap-4 justify-center'>
                     {
                         genres.map((genre, idx) => <div key={idx}>
@@ -61,14 +63,24 @@ const MovieCard = ({ movie }) => {
                 </div>
                 <div>
                     <Rating initialValue={rating} readonly fillColor="#72163E" size={30} />
-                    <p>Out of 5</p>
                 </div>
-                <p className=''>Runtime: {duration} min</p>
-                <p>Released Year: {year}</p>
-                <div className="card-actions justify-center flex-grow">
-                    {
-                        email ? <Link ><button onClick={() => handleDelete(_id)} className="btn bg-secondary text-white">Remove Favorite</button></Link> : <Link to={`/movies/${_id}`}><button className="btn bg-secondary text-white">View Details</button></Link>
-                    }
+                <div className='flex justify-center items-center gap-6'>
+                    <div className='gap-1 flex items-center justify-center'>
+                        <IoStopwatchOutline  className='text-center text-2xl'/> {duration}
+                    </div>
+                    <div className='gap-2 flex items-center justify-center'>
+                        <SlCalender className='text-center text-xl' /> {year}
+                    </div>
+                </div>
+                <div>
+                    <p>{summary.substring(0,55)}...</p>
+                </div>
+                <div className='flex-grow'>
+                    <div className="card-actions justify-center">
+                        {
+                            email ? <Link ><button onClick={() => handleDelete(_id)} className="btn bg-secondary text-white">Remove Favorite</button></Link> : <Link to={`/movies/${_id}`}><button className="btn bg-secondary text-white">View Details</button></Link>
+                        }
+                    </div>
                 </div>
             </div>
         </div >
