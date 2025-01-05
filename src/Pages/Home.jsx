@@ -3,7 +3,6 @@ import Banner from '../Components/Banner';
 import { useLoaderData } from 'react-router-dom';
 import FeaturedMovies from '../Components/FeaturedMovies';
 import TopPicks from '../Components/TopPicks';
-import AboutUs from '../Components/AboutUs';
 import Newsletter from '../Components/Newsletter';
 import PopularInterests from '../Components/PopularInterests';
 
