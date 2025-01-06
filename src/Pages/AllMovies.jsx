@@ -34,7 +34,7 @@ const AllMovies = () => {
 
 
     return (
-        <div className='w-11/12 mx-auto mb-8'>
+        <div className='w-11/12 mx-auto mb-12'>
             <h2 className='mt-6 text-center text-4xl font-bold'>Our Movies Collection</h2>
             <div className='flex justify-center my-5 space-x-5'>
                 <input
