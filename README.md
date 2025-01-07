@@ -4,18 +4,6 @@ Welcome to **CinePop**, a dynamic movie portal that allows users to explore, rev
 
 ---
 
-## 🌐 Live Demo
-
-Explore the live application here: [CinePop](https://cinepop.surge.sh/)
-
----
-
-## 🌐🔙 Server Repository
-
-Explore the server-side repository here: [CinePop Server](https://cine-popcorn-server.vercel.app/)
-
----
-
 ## 📋 Purpose
 
 The **CinePop** app aims to:
@@ -62,6 +50,18 @@ The **CinePop** app aims to:
 - **SweetAlert2:** For enhanced user feedback with alerts and modals.
 - **React Spinners:** For loader animations during data-fetching operations.
 - **React Spinner:** For smooth loading indicators.
+
+---
+
+## 🌐 Live Demo
+
+Explore the live application here: [CinePop](https://cinepop.surge.sh/)
+
+---
+
+## 🌐🔙 Server Repository
+
+Explore the server-side repository here: [CinePop Server](https://cine-popcorn-server.vercel.app/)
 
 ### Dependencies
 
