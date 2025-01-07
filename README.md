@@ -63,6 +63,8 @@ Explore the live application here: [CinePop](https://cinepop.surge.sh/)
 
 Explore the server-side repository here: [CinePop Server](https://cine-popcorn-server.vercel.app/)
 
+---
+
 ### Dependencies
 
 - **react** "^18.3.1"
