@@ -4,6 +4,12 @@ Welcome to **CinePop**, a dynamic movie portal that allows users to explore, rev
 
 ---
 
+## 🌐🔙 Server Repository
+
+Explore the server-side repository here: [CinePop Server]([https://cine-popcorn-server.vercel.app/](https://github.com/Rza-O/CinePop-Server-express-mongoDBb))
+
+---
+
 ## 📋 Purpose
 
 The **CinePop** app aims to:
@@ -56,12 +62,6 @@ The **CinePop** app aims to:
 ## 🌐 Live Demo
 
 Explore the live application here: [CinePop](https://cinepop.surge.sh/)
-
----
-
-## 🌐🔙 Server Repository
-
-Explore the server-side repository here: [CinePop Server](https://cine-popcorn-server.vercel.app/)
 
 ---
 
