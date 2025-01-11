@@ -6,7 +6,7 @@ Welcome to **CinePop**, a dynamic movie portal that allows users to explore, rev
 
 ## 🌐🔙 Server Repository
 
-Explore the server-side repository here: [CinePop Server]([https://cine-popcorn-server.vercel.app/](https://github.com/Rza-O/CinePop-Server-express-mongoDBb))
+Explore the server-side repository here: [CinePop Server](https://github.com/Rza-O/CinePop-Server-express-mongoDBb)
 
 ---
 
